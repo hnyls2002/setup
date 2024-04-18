@@ -2,6 +2,8 @@
 
 Personal setup for a new Linux machine.
 
+Utilities are [here](utils.md).
+
 ## Basic
 
 1. [Shell Setup](shell.md)

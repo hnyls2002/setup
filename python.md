@@ -30,9 +30,3 @@ or install all the extras
 ```sh
 sudo apt install python3.11-full
 ```
-
-### Solution for Broken Pip
-
-```sh
-curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11
-```
