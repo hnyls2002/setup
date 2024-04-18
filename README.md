@@ -6,6 +6,7 @@ Personal setup for a new Linux machine.
 
 1. [Shell Setup](shell.md)
 2. [Editor Setup](editor.md)
+3. SSH Setup
 
 ## Tools
 
