@@ -11,3 +11,4 @@ Personal setup for a new Linux machine.
 ## Tools
 
 1. [Nvidia Setup](nvidia.md)
+2. [Python Setup](python.md)
