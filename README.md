@@ -9,6 +9,7 @@ Utilities are [here](utils.md).
 1. [Shell Setup](shell.md)
 2. [Editor Setup](editor.md)
 3. SSH Setup
+4. [VSCode Setup](vscode.md)
 
 ## Tools
 
