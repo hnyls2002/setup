@@ -52,6 +52,8 @@ sudo apt-get update
 sudo apt-get -y install cuda
 ```
 
+Meta packages difference [here](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/#meta-packages)
+
 2. Reboot
 
 ```sh
