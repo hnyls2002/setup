@@ -19,3 +19,19 @@ For server end neovim:
 mkdir -p ~/.config/nvim
 echo -e "set runtimepath^=~/.vim runtimepath+=~/.vim/after\nlet &packpath = &runtimepath\nsource ~/.vimrc" > ~/.config/nvim/init.vim
 ```
+
+### Install copilot for neovim([install Nodejs first](./nodejs.md))
+
+
+Ref: https://github.com/github/copilot.vim
+
+```sh
+git clone https://github.com/github/copilot.vim.git \
+  ~/.config/nvim/pack/github/start/copilot.vim
+```
+
+Then in neovim:
+
+```
+:Copilot setup
+```

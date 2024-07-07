@@ -15,3 +15,4 @@ Utilities are [here](utils.md).
 
 1. [Nvidia Setup](nvidia.md)
 2. [Python Setup](python.md)
+3. [Nodejs Setup](nodejs.md)
