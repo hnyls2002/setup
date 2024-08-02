@@ -41,6 +41,15 @@ sudo reboot now
 nvidia-smi
 ```
 
+### Aptitude Tools
+
+For auto fixing the broken packages
+
+```sh
+sudo apt install aptitude
+sudo aptitude install nvidia-driver-535
+
+
 ### CUDA Installation
 
 1. Check the [tutorial](https://developer.nvidia.com/cuda-downloads)
