@@ -23,7 +23,7 @@ echo "/dev/xxx /home/username ext4 defaults 0 2" | sudo tee -a /etc/fstab
 ### Add the User
 
 ```bash
-sudo useradd -m -d /home/username -s /bin/bash username
+sudo useradd -d /home/username -s /bin/bash username
 sudo cp -a /etc/skel/. /home/username # Copy the default files
 ```
 
