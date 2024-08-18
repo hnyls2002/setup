@@ -10,6 +10,7 @@ Utilities are [here](utils.md).
 2. [Editor Setup](editor.md)
 3. [Git Setup](git.md)
 4. [VSCode Setup](vscode.md)
+5. [Add a New User](useradd.md)
 
 ## Tools
 
