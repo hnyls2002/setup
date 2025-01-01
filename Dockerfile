@@ -19,7 +19,8 @@ RUN echo 'tzdata tzdata/Areas select America' | debconf-set-selections \
 RUN apt update -y \
     && apt install python-is-python3 -y \
     && apt install zsh -y \
-    && apt install vim neovim virtualenv wget -y
+    && apt install vim virtualenv wget -y \
+    && apt install neovim -y
 
 RUN useradd -m lsyin \
     && echo "lsyin:lsyin" | chpasswd \
