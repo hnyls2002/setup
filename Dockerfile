@@ -57,7 +57,9 @@ RUN curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/in
     bindkey -M vicmd '\''j'\'' history-substring-search-down" ~/.zshrc
 
 RUN mkdir -p ~/.config/nvim \
-    && echo -e "set runtimepath^=~/.vim runtimepath+=~/.vim/after\nlet &packpath = &runtimepath\nsource ~/.vimrc" > ~/.config/nvim/init.vim
+    && echo "set runtimepath^=~/.vim runtimepath+=~/.vim/after" > ~/.config/nvim/init.vim \
+    && echo "let &packpath = &runtimepath" >> ~/.config/nvim/init.vim \
+    && echo "source ~/.vimrc" >> ~/.config/nvim/init.vim
 
 RUN git config --global user.name "hnyls2002" \
     && git config --global user.email "hnyls2002@gmail.com" \
