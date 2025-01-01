@@ -27,22 +27,6 @@ RUN useradd -m lsyin \
     && usermod -aG sudo lsyin \
     && chsh -s /usr/bin/zsh lsyin
 
-RUN su - lsyin -c "curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh -s -- --unattended" \
-    && su - lsyin -c "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" \
-    && su - lsyin -c "git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search" \
-    && su - lsyin -c "git clone https://github.com/jeffreytse/zsh-vi-mode ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-vi-mode" \
-    && su - lsyin -c "git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting" \
-    && su - lsyin -c 'sed -i "/^plugins=(git)/a \
-plugins+=(zsh-autosuggestions)\n\
-plugins+=(fast-syntax-highlighting)\n\
-plugins+=(zsh-history-substring-search)\n\
-plugins+=(zsh-vi-mode)\n\
-source \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh\n\
-source \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh\n\
-export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk\n\
-bindkey -M vicmd '\''k'\'' history-substring-search-up\n\
-bindkey -M vicmd '\''j'\'' history-substring-search-down" ~/.zshrc'
-
 
 RUN rm -rf /var/lib/apt/lists/* \
     && apt clean \
@@ -56,6 +40,21 @@ RUN chown lsyin:lsyin /home/lsyin/.vimrc
 USER lsyin
 WORKDIR /home/lsyin
 
+RUN curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh -s \
+    && git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions \
+    && git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search \
+    && git clone https://github.com/jeffreytse/zsh-vi-mode ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-vi-mode \
+    && git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting \
+    && sed -i "/^plugins=(git)/a \
+    plugins+=(zsh-autosuggestions)\n\
+    plugins+=(fast-syntax-highlighting)\n\
+    plugins+=(zsh-history-substring-search)\n\
+    plugins+=(zsh-vi-mode)\n\
+    source \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh\n\
+    source \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh\n\
+    export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk\n\
+    bindkey -M vicmd '\''k'\'' history-substring-search-up\n\
+    bindkey -M vicmd '\''j'\'' history-substring-search-down" ~/.zshrc
 
 RUN mkdir -p ~/.config/nvim \
     && echo -e "set runtimepath^=~/.vim runtimepath+=~/.vim/after\nlet &packpath = &runtimepath\nsource ~/.vimrc" > ~/.config/nvim/init.vim
