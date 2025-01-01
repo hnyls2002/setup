@@ -42,9 +42,6 @@ export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk\n\
 bindkey -M vicmd '\''k'\'' history-substring-search-up\n\
 bindkey -M vicmd '\''j'\'' history-substring-search-down" ~/.zshrc'
 
-RUN su - lsyin -c 'git config --global user.name "hnyls2002"' \
-    && su - lsyin -c 'git config --global user.email "hnyls2002@gmail.com"' \
-    && su - lsyin -c 'git config --global core.editor "nvim"'
 
 RUN rm -rf /var/lib/apt/lists/* \
     && apt clean \
@@ -53,3 +50,12 @@ RUN rm -rf /var/lib/apt/lists/* \
 
 USER lsyin
 WORKDIR /home/lsyin
+
+COPY .vimrc /home/lsyin/.vimrc
+
+RUN mkdir -p ~/.config/nvim \
+    && echo -e "set runtimepath^=~/.vim runtimepath+=~/.vim/after\nlet &packpath = &runtimepath\nsource ~/.vimrc" > ~/.config/nvim/init.vim
+
+RUN git config --global user.name "hnyls2002" \
+    && git config --global user.email "hnyls2002@gmail.com" \
+    && git config --global core.editor "nvim"
