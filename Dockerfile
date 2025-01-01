@@ -30,8 +30,7 @@ RUN useradd -m lsyin \
 
 RUN rm -rf /var/lib/apt/lists/* \
     && apt clean \
-    && apt autoremove -y \
-    && python3 -m pip cache purge
+    && apt autoremove -y
 
 COPY .vimrc /home/lsyin/.vimrc
 RUN chown lsyin:lsyin /home/lsyin/.vimrc
@@ -64,3 +63,7 @@ RUN mkdir -p ~/.config/nvim \
 RUN git config --global user.name "hnyls2002" \
     && git config --global user.email "hnyls2002@gmail.com" \
     && git config --global core.editor "nvim"
+
+RUN pip install nvitop \
+    && echo "PATH=\$PATH:/home/lsyin/.local/bin" >> ~/.zshrc \
+    && pip cache purge
