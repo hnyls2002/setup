@@ -49,10 +49,13 @@ RUN rm -rf /var/lib/apt/lists/* \
     && apt autoremove -y \
     && python3 -m pip cache purge
 
+COPY .vimrc /home/lsyin/.vimrc
+RUN chown lsyin:lsyin /home/lsyin/.vimrc
+
+
 USER lsyin
 WORKDIR /home/lsyin
 
-COPY .vimrc /home/lsyin/.vimrc
 
 RUN mkdir -p ~/.config/nvim \
     && echo -e "set runtimepath^=~/.vim runtimepath+=~/.vim/after\nlet &packpath = &runtimepath\nsource ~/.vimrc" > ~/.config/nvim/init.vim
