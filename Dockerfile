@@ -1,4 +1,3 @@
-
 ARG CUDA_VERSION=12.1.1
 FROM nvidia/cuda:${CUDA_VERSION}-devel-ubuntu20.04
 ARG BUILD_TYPE=all
@@ -15,9 +14,7 @@ RUN echo 'tzdata tzdata/Areas select America' | debconf-set-selections \
     && apt install curl git sudo libibverbs-dev -y \
     && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py \
     && python3 --version \
-    && python3 -m pip --version \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt clean
+    && python3 -m pip --version
 
 RUN apt update -y \
     && apt install python-is-python3 -y \
@@ -44,6 +41,15 @@ source \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search/
 export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk\n\
 bindkey -M vicmd '\''k'\'' history-substring-search-up\n\
 bindkey -M vicmd '\''j'\'' history-substring-search-down" ~/.zshrc'
+
+RUN su - lsyin -c 'git config --global user.name "hnyls2002"' \
+    && su - lsyin -c 'git config --global user.email "hnyls2002@gmail.com"' \
+    && su - lsyin -c 'git config --global core.editor "nvim"'
+
+RUN rm -rf /var/lib/apt/lists/* \
+    && apt clean \
+    && apt autoremove -y \
+    && python3 -m pip cache purge
 
 USER lsyin
 WORKDIR /home/lsyin
