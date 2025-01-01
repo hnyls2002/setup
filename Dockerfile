@@ -16,6 +16,9 @@ RUN echo 'tzdata tzdata/Areas select America' | debconf-set-selections \
     && python3 --version \
     && python3 -m pip --version
 
+RUN apt update \
+    && apt install python3.11 python3.11-dev python3.11-full -y
+
 RUN apt update -y \
     && apt install python-is-python3 -y \
     && apt install zsh -y \
@@ -64,6 +67,7 @@ RUN git config --global user.name "hnyls2002" \
     && git config --global user.email "hnyls2002@gmail.com" \
     && git config --global core.editor "nvim"
 
-RUN pip install nvitop \
+RUN pip install -U pip \
+    && pip install nvitop \
     && echo "PATH=\$PATH:/home/lsyin/.local/bin" >> ~/.zshrc \
     && pip cache purge
