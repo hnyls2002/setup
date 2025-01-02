@@ -11,6 +11,7 @@ Utilities are [here](utils.md).
 3. [Git Setup](git.md)
 4. [VSCode Setup](vscode.md)
 5. [Add a New User](useradd.md)
+6. [Docker Setup](docker.md)
 
 ## Tools
 
