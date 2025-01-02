@@ -10,10 +10,11 @@ docker build -t lsyin_dev:v1 .
 
 ## Docker Usage
 
-Run the docker in the background
+Run the docker in the background (`--itd`), just run the docker (`-it`).
 
 ```bash
 docker run -itd --shm-size 32g --gpus all \
+    -p 2222:22 \
     -v /opt/dlami/nvme/lsyin/docker_home:/home/lsyin \
     --name lsyin lsyin_dev:v1
 ```
@@ -41,5 +42,3 @@ Remove the docker
 ```bash
 docker rm lsyin
 ```
-
-

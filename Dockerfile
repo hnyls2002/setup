@@ -17,6 +17,7 @@ RUN echo 'tzdata tzdata/Areas select America' | debconf-set-selections \
     && python3 -m pip --version
 
 RUN apt update -y \
+    && apt install openssh-server -y \
     && apt install python3.11 python3.11-dev python3.11-full -y \
     && apt install python-is-python3 -y \
     && apt install zsh -y \
@@ -34,3 +35,4 @@ RUN useradd -m lsyin \
 
 USER lsyin
 WORKDIR /home/lsyin
+EXPOSE 22
