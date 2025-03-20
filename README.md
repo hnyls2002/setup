@@ -6,7 +6,7 @@ Utilities are [here](utils.md).
 
 ## Basic
 
-1. [Shell Setup](shell.md)
+1. [Shell Setup](shell.md) / [Without sudo](shell-no-sudo.md)
 2. [Editor Setup](editor.md)
 3. [Git Setup](git.md)
 4. [VSCode Setup](vscode.md)
